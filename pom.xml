@@ -13,6 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>12.0.12</jetty.version>
         <jetty.port>8080</jetty.port>
+
+        <spring.version>6.1.4</spring.version>
     </properties>
     <dependencies>
         <dependency>
@@ -29,6 +31,10 @@
                 <exclusion>
                     <groupId>jakarta.el</groupId>
                     <artifactId>jakarta.el-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-*</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -47,6 +53,42 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
+        </dependency>
+
+        <!-- SPRING -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- QUARKUS -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-core</artifactId>
+            <version>3.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-constraint</artifactId>
+            <version>2.5.0</version>
         </dependency>
     </dependencies>
     <repositories>
@@ -155,7 +197,7 @@
                 <dependency>
                     <groupId>org.glassfish</groupId>
                     <artifactId>jakarta.faces</artifactId>
-                    <version>4.0.7</version>
+                    <version>4.0.1</version>
                 </dependency>
             </dependencies>
         </profile>

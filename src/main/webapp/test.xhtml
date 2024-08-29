@@ -13,7 +13,28 @@
     <h:body>
 
         <h1>#{testView.string}</h1>
-        <h:form id="frmTest">
+
+        <h:form>
+            <p:growl id="msg" showDetail="true" escape="false"/>
+
+            <div class="card">
+                <h5>Advanced</h5>
+                <p:pickList id="pojoPickList" value="#{pickListView.countries}" var="country"
+                            itemValue="#{country}" itemLabel="#{country.name}">
+
+                    <f:facet name="sourceCaption">Available</f:facet>
+                    <f:facet name="targetCaption">Starting</f:facet>
+
+                    <p:ajax event="transfer" listener="#{pickListView.onTransfer}" update="msg"/>
+
+                    <p:column style="width:94%">
+                        <div class="flex align-items-center">
+                            <span class="flag flag-#{country.code} mr-2" style="width: 30px; height: 20px" />
+                            <h:outputText value="#{country.name}"/>
+                        </div>
+                    </p:column>
+                </p:pickList>
+            </div>
 
         </h:form>
 
